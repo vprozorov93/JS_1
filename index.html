@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Loading, please wait...</p>
+    <script>
+        function getUserNum() {
+            while (true) {
+                var userNum = prompt('Введите число которое загадал компьютер или "q" для выхода: ');
+
+                if (userNum == 'q') {
+                    return userNum
+                }
+                if (isNaN(userNum)) {
+                    alert('Вы ввели не число, попробуйте еще раз!')
+                } else {
+                    break;
+                }
+            }
+            return userNum
+        }
+        function checkUserInput(num) {
+            let userNum = getUserNum();
+            console.log(`Пользователь ввел число: ${userNum}`);
+            
+            if (userNum == 'q') {
+                return userNum
+            }
+
+            while (true) {
+                if (userNum > num) {
+                    alert('Вы ввели число больше, чем загадал компьютер, попробуйте еще раз')
+                    userNum = getUserNum();
+                } else if (userNum < num) {
+                    alert('Вы ввели число меньше, чем загадал компьютер, попробуйте еще раз')
+                    userNum = getUserNum();
+                } else {
+                    alert('Поздравляем! Вы угадали!')
+                    break;
+                }
+            }
+
+        }
+
+        while (true) {
+            let num = Math.floor(Math.random() * 10);
+            console.log(`Загадано число: ${num}`);
+            if (checkUserInput(num)=='q') {
+                break;
+            }           
+        }
+    </script>
+</body>
+</html>
